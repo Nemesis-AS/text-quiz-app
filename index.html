@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz App</title>
+
+    <link rel="stylesheet" href="./src/css/index.css" />
+</head>
+<body>
+    <main>
+        <div id="question" class="question">Test Question</div>
+
+        <div id="options" class="options">
+            <button class="option-a">Option A</button>
+            <button class="option-a">Option B</button>
+            <button class="option-a">Option C</button>
+            <button class="option-a">Option D</button>
+        </div>
+
+        <div class="input-row">
+            <button id="submit-btn">Submit</button>
+        </div>
+    </main>
+
+    <div class="overlay">
+        <button class="upload-json" id="uploadJson">Upload</button>
+    </div>
+
+    <input type="file" class="hidden" name="jsonFile" id="jsonInput" accept=".json" />
+
+    <script src="./src/js/main.js"></script>
+</body>
+</html>

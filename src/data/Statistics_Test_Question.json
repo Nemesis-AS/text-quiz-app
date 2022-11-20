@@ -1,0 +1,10 @@
+{
+    "question": "The median of 10, 14, 11, 9, 8, 12, 6 is",
+    "options": [
+        14,
+        11,
+        10,
+        12
+    ],
+    "correct_option": 2
+}

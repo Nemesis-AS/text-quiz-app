@@ -1,0 +1,133 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    font-family: "Poppins";
+}
+
+:root {
+    --light-bg-color: #cbd5e1;
+    --card-bg-color: #374151;
+    --gray-border-color: #6b7280;
+
+    --selected-color: #0891b2;
+    --correct-color: #047857;
+    --wrong-color: #be123c;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--light-bg-color);
+    height: 100vh;
+}
+
+main {
+    min-width: 300px;
+    width: 80vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: .4rem;
+
+    padding: 2rem;
+    background-color: var(--card-bg-color);
+    border-radius: 1rem;
+}
+
+main .question {
+    font-size: 1.4rem;
+    color: white;
+}
+
+main .question::before {
+    content: "Q: ";
+    font-size: 1.4rem;
+    color: var(--light-bg-color);
+}
+
+main .options {
+    display: grid;
+    grid-template-columns: 45% 45%;
+    /* grid-template-rows: repeat(2, 100%); */
+    gap: 10%;
+    width: 100%;
+}
+
+main .options > .option-btn {
+    width: 100%;
+    padding: .3rem .4rem;
+    font-size: 1.1rem;
+    background-color: transparent;
+    border: 1px solid var(--gray-border-color);
+    border-radius: .5rem;
+    margin: .5rem 0;
+    cursor: pointer;
+    transition: 300ms background-color, 300ms color;
+    color: var(--light-bg-color);
+}
+
+main .options > .option-btn:hover {
+    background-color: var(--light-bg-color);
+    color: black;
+}
+
+main .options > .option-btn.selected {
+    background-color: var(--selected-color);
+}
+
+main .input-row {
+    display: flex;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+main .input-row > #submit-btn {
+    flex-grow: 1;
+    padding: .4rem;
+    font-size: 1.2rem;
+    color: var(--light-bg-color);
+    background-color: transparent;
+    border: 1px solid var(--gray-border-color);
+    border-radius: .5rem;
+    cursor: pointer;
+    transition: 300ms background-color, 300ms color;
+}
+
+main .input-row > #submit-btn:hover {
+    background-color: var(--light-bg-color);
+    color: black;
+}
+
+.overlay {
+    position: absolute;
+    top: .5rem;
+    right: .5rem;
+}
+
+.overlay > .upload-json {
+    padding: .5rem;
+    background-color: transparent;
+    border: 2px solid var(--gray-border-color);
+    border-radius: .5rem;
+    transition: 300ms background-color, 300ms color;
+    cursor: pointer;
+}
+
+.overlay > .upload-json:hover {
+    background-color: var(--gray-border-color);
+    color: white;
+}
+
+.hidden {
+    display: none;
+}
+
+.correct {
+    background-color: var(--correct-color) !important;
+}
+
+.wrong {
+    background-color: var(--wrong-color) !important;
+}
