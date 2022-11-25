@@ -37,14 +37,6 @@ class Quiz {
         return this.questions[this.cursorPos];
     }
 
-    isLast() {
-        return this.cursorPos === this.questions.length;
-    }
-
-    isFirst() {
-        return this.cursorPos === 0;
-    }
-
     markAnswer(quesIdx, option) {
         this.markedAnswers[quesIdx] = option;
     }
@@ -58,7 +50,6 @@ class Quiz {
 
     getMarks() {
         let correctQues = this.checkAnswers();
-        console.log(correctQues);
         let quesMarks = this.metadata.ques_marks || 1;
         return correctQues * quesMarks;
     }
@@ -151,6 +142,8 @@ function onFileLoaded(event) {
     quiz = Quiz.fromObj(res);
     currentQues = quiz.getNext();
     renderQuestion();
+
+    document.getElementById("totalQues").textContent = quiz.questions.length;
 }
 
 function onOptionClicked(event) {
@@ -194,6 +187,8 @@ function renderQuestion() {
 
         optionsDiv.appendChild(btn);
     });
+
+    document.getElementById("currentIdx").textContent = quiz.cursorPos + 1;
 }
 
 // function revealAnswers() {
