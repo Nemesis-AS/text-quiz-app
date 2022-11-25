@@ -28,9 +28,9 @@ function main() {
     fileReader.addEventListener("load", onFileLoaded);
 
     renderQuestion({
-        question: QUESTION,
-        options: OPTIONS,
-        correct_option: CORRECT_OPTION
+        question: "Question",
+        options: ["A", "B", "C", "D"],
+        correct_option: 1
     });
 }
 
