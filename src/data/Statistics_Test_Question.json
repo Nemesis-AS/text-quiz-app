@@ -25,6 +25,8 @@
     "metadata": {
         "ques_count": 1,
         "ques_marks": 5,
-        "negative_marking": false
+        "negative_marking": true,
+        "correct_weight": 4,
+        "wrong_weight": 1
     }
 }

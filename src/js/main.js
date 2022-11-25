@@ -1,6 +1,3 @@
-// @todo: Add Negative Marking
-// @todo: Make Quiz Read-Only after submission
-
 class Quiz {
     constructor(questions = [], metadata = {}, title = "Quiz") {
         this.questions = questions;
@@ -43,17 +40,30 @@ class Quiz {
         this.markedAnswers[quesIdx] = option;
     }
 
-    checkAnswers() {
+    getCorrect() {
         return this.questions.reduce((correct, ques, idx) => {
             if (ques.correct_option == this.markedAnswers[idx]) return correct + 1;
             return correct;
         }, 0);
     }
 
+    getWrong() {
+        return this.questions.reduce((wrong, ques, idx) => {
+            if (this.markedAnswers[idx] == null) return wrong;
+            if (ques.correct_option != this.markedAnswers[idx]) return wrong + 1;
+            return wrong;
+        }, 0);
+    }
+
     getMarks() {
-        let correctQues = this.checkAnswers();
+        let correctQues = this.getCorrect();
         let quesMarks = this.metadata.ques_marks || 1;
-        return correctQues * quesMarks;
+        if (!this.metadata.negative_marking) return correctQues * quesMarks;
+
+        let wrongQues = this.getWrong();
+        let correctWeight = this.metadata.correct_weight || 4;
+        let wrongWeight = this.metadata.wrong_weight || 1;
+        return (correctQues * correctWeight) - (wrongQues * wrongWeight);
     }
 
     getTotalMarks() {
@@ -63,7 +73,7 @@ class Quiz {
 
     getResult() {
         return {
-            correct: this.checkAnswers(),
+            correct: this.getCorrect(),
             totalQues: this.questions.length,
             marks: this.getMarks(),
             totalMarks: this.getTotalMarks()
@@ -121,6 +131,7 @@ function main() {
 }
 
 function onQuizSubmitBtnClicked(_event) {
+    if (!quiz) return;
     openModal("submitModal");
 }
 
@@ -163,6 +174,7 @@ function onOptionClicked(event) {
 }
 
 function onNextBtnClicked(_event) {
+    if (!quiz) return;
     let ques = quiz.getNext();
     if (ques) {
         currentQues = ques;
@@ -171,6 +183,7 @@ function onNextBtnClicked(_event) {
 }
 
 function onPrevBtnClicked(_event) {
+    if (!quiz) return;
     let ques = quiz.getPrev();
     if (ques) {
         currentQues = ques;
