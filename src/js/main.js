@@ -1,4 +1,5 @@
 // @todo: Add Negative Marking
+// @todo: Make Quiz Read-Only after submission
 
 class Quiz {
     constructor(questions = [], metadata = {}, title = "Quiz") {
@@ -8,6 +9,7 @@ class Quiz {
 
         this.markedAnswers = this.questions.map(_item => null);
         this.cursorPos = -1;
+        this.submitted = false;
     }
 
     static fromObj(obj) {
@@ -67,6 +69,10 @@ class Quiz {
             totalMarks: this.getTotalMarks()
         };
     }
+
+    setSubmitted(value) {
+        this.submitted = value;
+    }
 }
 
 const fileReader = new FileReader();
@@ -125,6 +131,8 @@ function onQuizSubmitted(_event) {
     modal.getElementsByClassName("correct-ans")[0].textContent = `${result.correct}/${result.totalQues}`;
     modal.getElementsByClassName("marks")[0].textContent = `${result.marks}/${result.totalMarks}`;
     openModal("resultModal");
+    quiz.setSubmitted(true);
+    renderQuestion();
 }
 
 function onUploadBtnClicked(_event) {
@@ -177,14 +185,26 @@ function renderQuestion() {
     optionsDiv.innerHTML = "";
 
     let markedIdx = quiz.markedAnswers[quiz.cursorPos];
+    let submitted = quiz.submitted;
     currentQues.options.forEach((option, idx) => {
         let btn = document.createElement("button");
         btn.classList.add("option-btn");
         btn.dataset.option = idx + 1;
         btn.innerText = option;
         btn.addEventListener("click", onOptionClicked);
-        if (idx == markedIdx) btn.classList.add("selected");
+        if (submitted) {
+            btn.classList.add("no-input");
+            if (idx == currentQues.correct_option) {
+                btn.classList.add("correct");
+                btn.classList.remove("selected");
+            } else if (idx === markedIdx) {
+                btn.classList.add("wrong");
+                btn.classList.remove("selected");
+            }
+        } else {
+            if (idx == markedIdx) btn.classList.add("selected");
 
+        }
         optionsDiv.appendChild(btn);
     });
 

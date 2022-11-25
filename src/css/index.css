@@ -148,6 +148,10 @@ main .idx-row {
     background-color: var(--wrong-color) !important;
 }
 
+.no-input {
+    pointer-events: none;
+}
+
 .modal-overlay {
     position: absolute;
     width: 100vw;
