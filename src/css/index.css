@@ -80,11 +80,11 @@ main .options > .option-btn.selected {
 main .input-row {
     display: flex;
     width: 100%;
-    margin-top: 1rem;
+    margin-top: 1.5rem;
+    gap: .5rem;
 }
 
-main .input-row > #submit-btn {
-    flex-grow: 1;
+main .input-row > button {
     padding: .4rem;
     font-size: 1.2rem;
     color: var(--light-bg-color);
@@ -95,9 +95,18 @@ main .input-row > #submit-btn {
     transition: 300ms background-color, 300ms color;
 }
 
-main .input-row > #submit-btn:hover {
+main .input-row > button:hover {
     background-color: var(--light-bg-color);
     color: black;
+}
+
+main .input-row > .nav-btn {
+    flex-grow: 1;
+}
+
+main .input-row > #submit-btn {
+    flex-grow: 5;
+    
 }
 
 .overlay {
@@ -121,7 +130,7 @@ main .input-row > #submit-btn:hover {
 }
 
 .hidden {
-    display: none;
+    display: none !important;
 }
 
 .correct {
@@ -130,4 +139,54 @@ main .input-row > #submit-btn:hover {
 
 .wrong {
     background-color: var(--wrong-color) !important;
+}
+
+.modal-overlay {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, .5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal {
+    padding: 1rem;
+    border-radius: .5rem;
+    background-color: var(--card-bg-color);
+    color: white;
+    min-width: 300px;
+    /* min-height: 300px; */
+}
+
+.modal .modal-header {
+    font-size: 1.6rem;
+    text-align: center;
+    border-bottom: 2px solid var(--gray-border-color);
+}
+
+.modal .modal-body {
+    margin: 1rem 0;
+    text-align: center;
+}
+
+.modal .modal-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 2px solid var(--gray-border-color);
+    padding: 1rem 0;
+    gap: 1rem;
+}
+
+.modal .modal-footer button {
+    padding: .4rem;
+    font-size: 1.2rem;
+    color: white;
+    background-color: transparent;
+    border: 1px solid var(--gray-border-color);
+    border-radius: .5rem;
+    cursor: pointer;
+    transition: 300ms background-color, 300ms color;
 }

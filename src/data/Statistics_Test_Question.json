@@ -1,10 +1,30 @@
 {
-    "question": "The median of 10, 14, 11, 9, 8, 12, 6 is",
-    "options": [
-        14,
-        11,
-        10,
-        12
+    "title": "Test Quiz",
+    "questions": [
+        {
+            "question": "The median of 10, 14, 11, 9, 8, 12, 6 is",
+            "options": [
+                14,
+                11,
+                10,
+                12
+            ],
+            "correct_option": 2
+        },
+        {
+            "question": "Another One",
+            "options": [
+                14,
+                11,
+                10,
+                12
+            ],
+            "correct_option": 2
+        }
     ],
-    "correct_option": 2
+    "metadata": {
+        "ques_count": 1,
+        "ques_marks": 5,
+        "negative_marking": false
+    }
 }

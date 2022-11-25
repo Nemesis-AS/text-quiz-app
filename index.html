@@ -13,14 +13,16 @@
         <div id="question" class="question">Test Question</div>
 
         <div id="options" class="options">
-            <button class="option-a">Option A</button>
-            <button class="option-a">Option B</button>
-            <button class="option-a">Option C</button>
-            <button class="option-a">Option D</button>
+            <button class="option-btn">Option A</button>
+            <button class="option-btn">Option B</button>
+            <button class="option-btn">Option C</button>
+            <button class="option-btn">Option D</button>
         </div>
 
         <div class="input-row">
+            <button id="prevBtn" class="nav-btn">Prev</button>
             <button id="submit-btn">Submit</button>
+            <button id="nextBtn" class="nav-btn">Next</button>
         </div>
     </main>
 
@@ -29,6 +31,31 @@
     </div>
 
     <input type="file" class="hidden" name="jsonFile" id="jsonInput" accept=".json" />
+
+    <div id="modalBg" class="modal-overlay hidden">
+        <div class="modal hidden" id="resultModal">
+            <div class="modal-header">Results</div>
+            <div class="modal-body">
+                <div class="modal-text">Correct: <span class="correct-ans"></span></div>
+                <div class="modal-text">Marks: <span class="marks"></span></div>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-close correct" data-target="resultModal">Close</button>
+            </div>
+        </div>
+
+        <div class="modal hidden" id="submitModal">
+            <div class="modal-header">Submit Quiz?</div>
+            <div class="modal-body">
+                <div class="modal-text">Are you sure you want to submit the quiz?</div>
+            </div>
+            <div class="modal-footer">
+                <button class="correct" id="submitQuiz">Submit</button>
+                <button class="modal-close wrong" data-target="submitModal">Close</button>
+            </div>
+        </div>
+    </div>
+    
 
     <script src="./src/js/main.js"></script>
 </body>
